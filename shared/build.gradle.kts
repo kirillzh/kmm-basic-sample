@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -6,6 +8,7 @@ plugins {
 kotlin {
     android()
 
+    val xcf = XCFramework()
     listOf(
         iosX64(),
         iosArm64(),
@@ -13,6 +16,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            xcf.add(this)
         }
     }
 
@@ -60,3 +64,5 @@ android {
         targetSdk = 31
     }
 }
+
+buildDir = File("_build")
