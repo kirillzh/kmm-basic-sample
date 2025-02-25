@@ -1,12 +1,10 @@
 package com.jetbrains.basicsample
 
-import kotlin.test.Test
-import kotlin.test.assertTrue
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-class GreetingTest {
-
-    @Test
-    fun testExample() {
-        assertTrue(Greeting().greeting().contains("iOS"), "Check iOS is mentioned")
+class GreetingTest : FunSpec({
+    test("example") {
+        Greeting().greeting().contains("iOS").shouldBe(true)
     }
-}
+})

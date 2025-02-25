@@ -1,13 +1,10 @@
 package com.jetbrains.basicsample
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-class CalculatorTest {
-
-    @Test
-    fun testSum() {
-        assertEquals(3, Calculator.sum(1, 2))
+class CalculatorTest : FunSpec({
+    test("sum") {
+        Calculator.sum(1, 2).shouldBe(3)
     }
-
-}
+})

@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotest)
 }
 
 kotlin {
@@ -30,14 +31,18 @@ kotlin {
             // put your Multiplatform dependencies here
         }
         commonTest.dependencies {
-            implementation(kotlin("test"))
+            implementation(libs.kotest.framework.engine)
         }
         val androidUnitTest by getting {
             dependencies {
-                implementation(libs.junit)
+                implementation(libs.kotest.runner.junit5)
             }
         }
     }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 android {

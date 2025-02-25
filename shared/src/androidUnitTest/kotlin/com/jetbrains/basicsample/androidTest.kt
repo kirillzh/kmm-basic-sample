@@ -1,12 +1,10 @@
 package com.jetbrains.basicsample
 
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-class GreetingTest {
-
-    @Test
-    fun testExample() {
-        assertTrue("Check Android is mentioned", Greeting().greeting().contains("Android"))
+class GreetingTest : FunSpec({
+    test("example") {
+        Greeting().greeting().contains("Android").shouldBe(true)
     }
-}
+})
